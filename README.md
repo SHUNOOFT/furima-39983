@@ -60,7 +60,7 @@
 | block              | integer    | null: false                    |
 | building           | integer    | null: false                    |
 | phone_number       | integer    | null: false                    |
-| phone_number       | references | null: false, foreign_key: true |
+| purchase           | references | null: false, foreign_key: true |
 
 ### Association
 
