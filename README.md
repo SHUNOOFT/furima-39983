@@ -15,8 +15,8 @@
 
 ### Association
 
-* has_many :items
-* has_many :orders
+- has_many :items
+- has_many :purchases
 
 ## items table
 
@@ -46,6 +46,7 @@
 ### Association
 
 - belongs_to :item
+- belongs_to :user
 - has_one :order
 
 ## orders table
@@ -62,4 +63,3 @@
 ### Association
 
 - belongs_to :purchase
-- belongs_to :user
