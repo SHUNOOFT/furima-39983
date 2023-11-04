@@ -23,7 +23,7 @@
 | Column             | Type       | Options                        |
 |--------------------|------------|--------------------------------|
 | title              | string     | null: false                    |
-| info_id            | text       | null: false                    |
+| info               | text       | null: false                    |
 | tag_id             | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
@@ -54,12 +54,12 @@
 
 | Column             | Type       | Options                        |
 |--------------------|------------|--------------------------------|
-| postcode           | integer    | null: false                    |
-| prefecture_id      | references | null: false, foreign_key: true |
-| city               | integer    | null: false                    |
-| block              | integer    | null: false                    |
-| building           | integer    | null: false                    |
-| phone_number       | integer    | null: false                    |
+| postcode           | string     | null: false                    |
+| prefecture_id      | references | null: false                    |
+| city               | string     | null: false                    |
+| block              | string     | null: false                    |
+| building           | string     | null: true                     |
+| phone_number       | string     | null: false                    |
 | purchase           | references | null: false, foreign_key: true |
 
 ### Association
