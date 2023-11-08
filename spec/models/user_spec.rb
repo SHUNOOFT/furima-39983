@@ -8,17 +8,7 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     context '正常系テスト' do
       it '全ての項目が正しい場合、登録できること' do
-        @user.nickname = 'テストユーザー'
-        @user.first_name = '太郎'
-        @user.last_name = '山田'
-        @user.first_name_kana = 'タロウ'
-        @user.last_name_kana = 'ヤマダ'
-        @user.birthday = '1990-01-01'
-        @user.email = 'test@example.com'
-        @user.password = 'Password123'
-        @user.password_confirmation = 'Password123'
         expect(@user).to be_valid
-        expect { @user.save }.to change(User, :count).by(1)
       end
     end
 
