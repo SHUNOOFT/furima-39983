@@ -83,4 +83,5 @@ group :production do
 end
 
 gem 'devise'
-gem 'rubocop', require: false
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
