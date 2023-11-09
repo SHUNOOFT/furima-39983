@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :image, :title,:info, :category_id, :charge_id,:prefecture_id, presence: true
 
   #ジャンルの選択が「---」の時は保存できないようにする
-  validates :category_id, :condition_id :charge_id,:prefecture_id, :shipping_date_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, :condition_id, :charge_id, :prefecture_id, :shipping_date_id, numericality: { other_than: 1, message: "can't be blank"}
 
   belongs_to :user
   has_one :purchase
