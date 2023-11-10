@@ -24,11 +24,11 @@
 |--------------------|------------|--------------------------------|
 | title              | string     | null: false                    |
 | info               | text       | null: false                    |
-| tag_id             | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
-| shipping_id        | integer    | null: false                    |
-| invoice_city_id    | integer    | null: false                    |
-| invoice_day_id     | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| shipping_fee_id    | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 

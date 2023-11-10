@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :calculate_fee_and_profit, only: [:create, :update]
 
   def index
   end
@@ -18,7 +19,13 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.require(:item).permit(:image, :title, :info, :tag_id, :condition_id, :shipping_id, :invoice_city_id, :invoice_day_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :title, :info, :category_id, :condition_id, :prefecture_id, :shipping_fee_id, :shipping_day_id, :price).merge(user_id: current_user.id)
+  end
+
+  def calculate_fee_and_profit
+    # items コントローラーにモデルの計算ロジックを呼び出す処理を書く
+    @item.calculate_fee_and_profit if @item
   end
 end

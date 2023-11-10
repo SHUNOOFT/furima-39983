@@ -42,11 +42,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_163911) do
   create_table "items", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "info", null: false
-    t.integer "tag_id", null: false
+    t.integer "category_id", null: false
     t.integer "condition_id", null: false
-    t.integer "shipping_id", null: false
-    t.integer "invoice_city_id", null: false
-    t.integer "invoice_day_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shipping_fee_id", null: false
+    t.integer "shipping_day_id", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
