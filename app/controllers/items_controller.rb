@@ -8,9 +8,17 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  private
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to @item
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
+  private
   def item_params
-    params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :title, :info, :tag_id, :condition_id, :prefecture_id, :invoice_city_id, :invoice_day_id, ).merge(user_id: current_user.id)
   end
 end

@@ -1,16 +1,19 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :user
   has_one_attached :image
-  belongs_to :category_id
-  belongs_to :condition_id
-  belongs_to :charge_id
-  belongs_to :prefecture_id
-  belongs_to :shipping_date_id
+  has_one :purchase
 
-  validates :image, :title,:info, :category_id, :charge_id,:prefecture_id, presence: true
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :tag_id
+  belongs_to :info
+  belongs_to :condition_id
+  belongs_to :price
+  belongs_to :prefecture_id
+
+  validates :image, :title, :info, :tag_id, :condition_id, :prefecture_id, :invoice_city_id, :invoice_day_id, :price, presence: true
 
   #ジャンルの選択が「---」の時は保存できないようにする
-  validates :category_id, :condition_id, :charge_id, :prefecture_id, :shipping_date_id, numericality: { other_than: 1, message: "can't be blank"}
+  validates :title, :info, :tag_id, :condition_id, :prefecture_id, :invoice_city_id, :invoice_day_id, :price,numericality: { other_than: 1, message: "can't be blank"}
 
   belongs_to :user
   has_one :purchase
