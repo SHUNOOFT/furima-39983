@@ -1,5 +1,4 @@
 window.addEventListener('turbo:load', function() {
-  console.log("OK");
   // 価格を計算する関数
   function item_calculate() {
     const priceInput = document.getElementById('price'); 
