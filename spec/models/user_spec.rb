@@ -115,6 +115,7 @@ RSpec.describe User, type: :model do
       @user.first_name_kana = 'たろう' # 名（カナ）に平仮名を含む
       @user.valid?
       expect(@user.errors.full_messages).to include('First name kana はカタカナで入力してください')
+      
     end
   end
 end
