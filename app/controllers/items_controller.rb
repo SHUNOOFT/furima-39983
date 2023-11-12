@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    @item = Item.new
+    @items = Item.all # あるいはデータを取得する適切な方法に置き換える
   end
 
   def new
