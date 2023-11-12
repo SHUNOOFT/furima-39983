@@ -59,6 +59,32 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
 
+      it 'categoryが「---」の場合、出品できないこと' do
+        @item.category_id = Category.find_by(name: '---').id
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'conditionが「---」の場合、出品できないこと' do
+        @item.condition_id = Condition.find_by(name: '---').id
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
+      end
+      it 'shipping_feeが「---」の場合、出品できないこと' do
+        @item.shipping_fee_id = ShippingFee.find_by(name: '---').id
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
+      end
+      it 'prefectureが「---」の場合、出品できないこと' do
+        @item.prefecture_id = Prefecture.find_by(name: '---').id
+        @item.valid?
+       expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it 'shipping_dayが「---」の場合、出品できないこと' do
+        @item.shipping_day_id = ShippingDay.find_by(name: '---').id
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day can't be blank")
+      end
+
       it 'priceの記載がない場合、出品されないこと' do
         @item.price = nil
         @item.valid?
