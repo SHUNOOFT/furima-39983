@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    sold_out?
+    #sold_out?
   end
 
   private
