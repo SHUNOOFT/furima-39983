@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :set_item,only: [:show]
+  before_action :set_item,only: [:show, :edit, :update]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -21,6 +21,17 @@ class ItemsController < ApplicationController
 
   def show
     #sold_out?
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(params[:id])
+      redirect_to item_path(@item)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
