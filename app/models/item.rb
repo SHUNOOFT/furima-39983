@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   # has_one :purchase
   def sold_out?
-    price < 0
+    #price < 0
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
