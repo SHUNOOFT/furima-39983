@@ -24,10 +24,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    # ログインユーザーが出品者でない場合はトップページにリダイレクト
+    unless current_user.id == @item.user_id
+      redirect_to root_path, alert: "他のユーザーの商品は編集できません。"
+      return
+    end
   end
 
   def update
-    if @item.update(params[:id])
+    if @item.update(item_params)
       redirect_to item_path(@item)
     else
       render :edit, status: :unprocessable_entity
