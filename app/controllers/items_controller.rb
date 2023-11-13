@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def sold_out?
-    @item.price < 0
-  end
+  #def sold_out?
+    #@item.price < 0
+  #end
 end
