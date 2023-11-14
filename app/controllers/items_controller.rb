@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
-  before_action :set_item,only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :move_to_top, only: [:edit]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -24,12 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    # ログインユーザーが出品者でない場合はトップページにリダイレクト
-    unless current_user.id == @item.user_id
-      redirect_to root_path, alert: "他のユーザーの商品は編集できません。"
-      return
-    end
   end
 
   def update
@@ -41,13 +36,18 @@ class ItemsController < ApplicationController
   end
 
   private
-
   def item_params
     params.require(:item).permit(:image, :title, :info, :category_id, :condition_id, :prefecture_id, :shipping_fee_id, :shipping_day_id, :price).merge(user_id: current_user.id)
   end
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_top
+    unless @item.user == current_user.id
+      redirect_to root_path
+    end
   end
 
   #def sold_out?
