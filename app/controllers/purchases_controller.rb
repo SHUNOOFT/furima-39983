@@ -2,11 +2,12 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    @purchase_order = PurchaseOrder.new(purchase_params)
+    @item = Item.find(params[:item_id])
+    @purchase_order = PurchaseOrder.new
   end
 
   def new
-    @purchase_order = PurchaseOrder.new(purchase_params)
+    @purchase_order = PurchaseOrder.new
   end
 
   def create
