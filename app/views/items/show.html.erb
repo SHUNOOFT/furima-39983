@@ -32,7 +32,7 @@
       <%= link_to "削除", item_path(@item), data: {turbo_method: :delete }, class: "item-destroy" %>
       <% else %>
       <% end %> 
-      <%= link_to "購入画面に進む", purchases_path,class:"item-red-btn"%> 
+      <%= link_to "購入画面に進む", item_purchases_path(@item),class:"item-red-btn"%> 
     <% end %> 
 
     <div class="item-explain-box">
