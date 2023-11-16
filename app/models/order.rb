@@ -1,5 +1,3 @@
-class Purchase < ApplicationRecord
-  belongs_to :user
-  belongs_to :item
-  has_one :perchase
+class Order < ApplicationRecord
+  belongs_to :purchase
 end
