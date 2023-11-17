@@ -11,6 +11,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @purchase_order = PurchaseOrder.new(purchase_params)
     if @purchase_order.valid?
       @purchase_order.save
@@ -22,6 +23,6 @@ class PurchasesController < ApplicationController
 
   private
   def purchase_params
-    params.require(:purchase_order).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:purchase_order).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 end
