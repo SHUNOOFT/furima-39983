@@ -1,10 +1,11 @@
 class PurchaseOrder
   include ActiveModel::Model
-  attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :city, :block
     validates :user_id, :item_id
+    validates :token
     validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
     validates :phone_number, numericality: { only_integer: true }
   end
