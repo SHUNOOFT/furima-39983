@@ -8,6 +8,7 @@ FactoryBot.define do
     phone_number { '09012345678' }
     user_id { 1 }
     item_id { 1 }
+    token { 1 }
 
 
     trait :without_postcode do
