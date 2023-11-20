@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_top, only: [:edit, :destroy]
 
@@ -21,15 +21,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if @item.purchase.present?
-      redirect_to root_path
-    end
+    #sold_out?
   end
 
   def edit
-    if @item.purchase.present?
-      redirect_to root_path
-    end
   end
 
   def update
@@ -59,4 +54,8 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  #def sold_out?
+    #@item.price < 0
+  #end
 end
