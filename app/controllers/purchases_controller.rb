@@ -1,20 +1,14 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :set_item, only: [:index]
+  before_action :set_item, only: [:create, :index]
   before_action :move_to_root_path, only: [:index]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
-    @purchase_order = PurchaseOrder.new
-  end
-
-  def new
     @purchase_order = PurchaseOrder.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_order = PurchaseOrder.new(purchase_params)
     if @purchase_order.valid?
       pay_item
