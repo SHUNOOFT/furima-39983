@@ -21,10 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    #sold_out?
   end
 
   def edit
+    if @item.purchase.present?
+      redirect_to root_path
+    end
   end
 
   def update
@@ -54,8 +56,4 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  #def sold_out?
-    #@item.price < 0
-  #end
 end
