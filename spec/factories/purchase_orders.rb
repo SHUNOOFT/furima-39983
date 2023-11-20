@@ -6,8 +6,6 @@ FactoryBot.define do
     block { 'Example Block' }
     building { 'Example Building' }
     phone_number { '09012345678' }
-    user_id { 1 }
-    item_id { 1 }
     token { 1 }
 
 
